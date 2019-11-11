@@ -2,6 +2,9 @@
 <p>投稿者：<%= @blog.user.name %></p>
 <p>タイトル：<%= @blog.title %></p>
 <p>内容：<%= @blog.content %></p>
+<p>画像：<%= @blog.postimages.url %></p>
+<p>画像：<%= image_tag @feed.image.url, :size => '200x300' %></p>
+
 
 <br>
 <%= link_to "ブログ一覧画面にもどる", blogs_path %>

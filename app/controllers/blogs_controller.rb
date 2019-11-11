@@ -16,7 +16,7 @@ class BlogsController < ApplicationController
             render :new
         else
             if @blog.save
-            redirect_to blogs_path, notice:"ブログを作成しました！"
+                redirect_to blogs_path, notice:"ブログを作成しました！"
                 else
                 render :new
             end
@@ -24,7 +24,6 @@ class BlogsController < ApplicationController
     end
 
     def show
-        @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     end
 
     def edit
@@ -52,7 +51,7 @@ class BlogsController < ApplicationController
 private
 
     def blog_params
-        params.require(:blog).permit(:title, :content)
+        params.require(:blog).permit(:title, :content, :postimages)
     end
 
     def set_blog

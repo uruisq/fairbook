@@ -19,6 +19,12 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+
+  <div class="blog_postimages">
+  <%= form.label :postimages %>
+  <%= form.file_field :postimages, multiple: true %>
+</div>
+
   <%= form.submit %>
 <% end %>
 

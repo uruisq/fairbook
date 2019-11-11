@@ -1,14 +1,20 @@
-<h2>以下の内容で、送信する。</h2>
+<h1>確認画面</h1>
 
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-  <%= form.hidden_field :user %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  
+
   <p>投稿者：<%= @blog.user.name %></p>
   <p>タイトル：<%= @blog.title %></p>
   <p>本文：<%= @blog.content %></p>
-  <%= form.submit "登録する" %>
-  <br>
-  <%= form.submit "戻る", name: 'back' %>
-<% end %>
+  <p>画像：<%= image_tag(@blog.postimages.url) if @blog.postimages && @blog.postimages.url %></p>
+
+  <%= form.hidden_field :user %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :postimages_cache %>
+
+  <% end %>
+
+  <%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "戻る", name: "back" %>
+  <% end %>
